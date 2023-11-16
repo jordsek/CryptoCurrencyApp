@@ -15,7 +15,7 @@ struct CryptoView: View {
     @State private var searchText: String = ""
     
     var body: some View {
-        NavigationStack{
+       NavigationStack{
             VStack{
                 List{
                     ForEach(filteredCoin){ coin in
@@ -33,9 +33,26 @@ struct CryptoView: View {
                 await viewModel.getCryptoList(urlString: APIEndpoints.CryptoAPIEndpoint)
             }
             .navigationTitle("Live Prices")
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $searchText)
-            
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button{
+                        
+                    } label: {
+                        HeaderButtonView(iconName: "plus.magnifyingglass")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading){
+                Button{
+                    
+                } label: {
+                    HeaderButtonView(iconName: "plus")
+                }
+              }
         }
+    }
         .refreshable {
             await viewModel.getCryptoList(urlString: APIEndpoints.CryptoAPIEndpoint)
         }

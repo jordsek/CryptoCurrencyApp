@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Crypto
 // MARK: - WelcomeElement
-struct Coin: Codable, Identifiable {
+struct Coin: Codable, Identifiable{
         let id: String
         let symbol, name: String
         let image: String

@@ -13,6 +13,7 @@ class CryptoViewModel: ObservableObject{
     //@Published var coin : Coin?
     @Published var cryptoArray: [Coin] = []
     @Published var customError: NetworkError?
+    @Published var currentCoin: Coin?
     
     let repository: CrytoRespository
     init(repository: CrytoRespository){
