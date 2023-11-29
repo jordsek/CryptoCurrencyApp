@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     //MARK: -properties
+    @ObservedObject var loginViewModel: LoginViewModel
+    
     @State private var isLoginMode = false
     @State private var email = ""
     @State private var password = ""
@@ -100,7 +102,21 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(loginViewModel: LoginViewModel())
+}
+
+extension LoginView {
+    private func handleAction(){
+        if isLoginMode {
+            loginViewModel.loginUser(email: email, password: password)
+        }else {
+            if let image = image {
+                loginViewModel.createNewAccount(email: email, password: password, image: image)
+            } else {
+                self.loginStatusMessage = "Select an image first!"
+            }
+        }
+    }
 }
 
 
