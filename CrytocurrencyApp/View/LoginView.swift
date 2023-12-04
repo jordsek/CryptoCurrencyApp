@@ -68,7 +68,7 @@ struct LoginView: View {
                     .cornerRadius(10)
                 
                 Button{
-                    
+                    handleAction()
                 } label: {
                     Text(isLoginMode ? "Login" : "Create Account")
                         .foregroundStyle(.white)
